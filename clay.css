@@ -1,0 +1,152 @@
+/* Clay — a warm theme for the Markdown Viewer browser extension (custom theme, color scheme: auto). MIT License. */
+:root {
+  --bg: #faf9f5;
+  --surface: #f0eee6;
+  --text: #141413;
+  --muted: #6b6a65;
+  --border: #e3e0d6;
+  --accent: #c15f3c;
+  --accent-soft: rgba(217, 119, 87, .14);
+  --code: #9a4a2c;
+  --toc-delimiter: #e3e0d6;
+  --t-comment: #8a877e;
+  --t-punct: #6b6a65;
+  --t-keyword: #b5482a;
+  --t-string: #4f6b2e;
+  --t-number: #9a5b13;
+  --t-func: #2f5f8f;
+  --t-prop: #7a4b8c;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #262624;
+    --surface: #30302e;
+    --text: #ece9e1;
+    --muted: #a6a39b;
+    --border: #3e3d39;
+    --accent: #e38b6a;
+    --accent-soft: rgba(217, 119, 87, .18);
+    --code: #f0a487;
+    --toc-delimiter: #3e3d39;
+    --t-comment: #8f8c84;
+    --t-punct: #b3b0a8;
+    --t-keyword: #ec9a7a;
+    --t-string: #a9c27f;
+    --t-number: #e3b56b;
+    --t-func: #8fb8de;
+    --t-prop: #c9a2d8;
+    color-scheme: dark;
+  }
+}
+
+html, body { background: var(--bg) !important; color: var(--text); }
+body { -webkit-font-smoothing: antialiased; }
+
+/* readable line length when Content Width is AUTO; other width options still apply */
+.markdown-theme:not([class*="_width-"]) { max-width: 920px !important; }
+.markdown-theme {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+  padding: 32px 28px 80px !important;
+}
+
+/* headings */
+.markdown-theme h1, .markdown-theme h2, .markdown-theme h3,
+.markdown-theme h4, .markdown-theme h5, .markdown-theme h6 {
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 1.6em 0 .6em;
+  color: var(--text);
+}
+.markdown-theme h1 { font-size: 1.75em; margin-top: .4em; }
+.markdown-theme h2 { font-size: 1.4em; padding-bottom: .3em; border-bottom: 1px solid var(--border); }
+.markdown-theme h3 { font-size: 1.2em; }
+.markdown-theme h4 { font-size: 1.05em; }
+.markdown-theme h5, .markdown-theme h6 { font-size: 1em; color: var(--muted); }
+.markdown-theme .anchor { display: none; }
+
+/* text */
+.markdown-theme p, .markdown-theme ul, .markdown-theme ol,
+.markdown-theme blockquote, .markdown-theme table, .markdown-theme pre { margin: 0 0 1em; }
+.markdown-theme ul, .markdown-theme ol { padding-left: 1.6em; }
+.markdown-theme li + li { margin-top: .25em; }
+.markdown-theme li > ul, .markdown-theme li > ol { margin: .25em 0 0; }
+.markdown-theme strong { font-weight: 600; }
+.markdown-theme a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+.markdown-theme a:hover { border-bottom-color: var(--accent); }
+.markdown-theme mark { background: var(--accent-soft); color: inherit; padding: 0 .15em; border-radius: 3px; }
+.markdown-theme hr { border: 0; border-top: 1px solid var(--border); margin: 2em 0; }
+.markdown-theme img { max-width: 100%; border-radius: 6px; }
+
+.markdown-theme blockquote {
+  padding: .2em 1em;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+  color: var(--muted);
+}
+.markdown-theme blockquote p:last-child { margin-bottom: .4em; }
+
+/* code */
+.markdown-theme code, .markdown-theme kbd {
+  font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: .875em;
+}
+.markdown-theme :not(pre) > code {
+  background: var(--surface) !important;
+  color: var(--code) !important;
+  padding: .15em .4em;
+  border-radius: 4px;
+}
+.markdown-theme pre, .markdown-theme pre[class*=language-] {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px !important;
+  line-height: 1.55;
+}
+.markdown-theme pre code, .markdown-theme pre code[class*=language-] {
+  background: transparent !important;
+  text-shadow: none !important;
+  padding: 0;
+}
+
+/* syntax colors: owned by this theme, independent of the prism theme the extension loads */
+.markdown-theme pre code, .markdown-theme pre[class*=language-], .markdown-theme code[class*=language-] { color: var(--text) !important; }
+.markdown-theme .token { background: none !important; text-shadow: none !important; }
+.markdown-theme .token.comment, .markdown-theme .token.prolog, .markdown-theme .token.doctype, .markdown-theme .token.cdata { color: var(--t-comment) !important; font-style: italic; }
+.markdown-theme .token.punctuation, .markdown-theme .token.operator { color: var(--t-punct) !important; }
+.markdown-theme .token.keyword, .markdown-theme .token.atrule, .markdown-theme .token.important, .markdown-theme .token.selector { color: var(--t-keyword) !important; }
+.markdown-theme .token.string, .markdown-theme .token.char, .markdown-theme .token.attr-value, .markdown-theme .token.regex, .markdown-theme .token.inserted { color: var(--t-string) !important; }
+.markdown-theme .token.number, .markdown-theme .token.boolean, .markdown-theme .token.constant, .markdown-theme .token.symbol, .markdown-theme .token.deleted { color: var(--t-number) !important; }
+.markdown-theme .token.function, .markdown-theme .token.class-name, .markdown-theme .token.builtin { color: var(--t-func) !important; }
+.markdown-theme .token.property, .markdown-theme .token.tag, .markdown-theme .token.attr-name, .markdown-theme .token.variable, .markdown-theme .token.decorator { color: var(--t-prop) !important; }
+
+/* tables */
+.markdown-theme table { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; }
+.markdown-theme th, .markdown-theme td { border: 1px solid var(--border); padding: .45em .8em; }
+.markdown-theme th { background: var(--surface); font-weight: 600; text-align: left; }
+
+/* task lists, footnotes */
+.markdown-theme .task-list-item { list-style: none; }
+.markdown-theme .task-list-item input { margin: 0 .5em 0 -1.4em; accent-color: #d97757; }
+.markdown-theme .footnotes { font-size: .9em; color: var(--muted); }
+
+/* math: keep display formulas scrollable instead of overflowing */
+.markdown-theme mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: .2em 0; }
+
+/* table of contents sidebar */
+#_toc {
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  border-right: 1px solid var(--border) !important;
+}
+#_toc a { color: var(--muted); text-decoration: none; border-radius: 6px; }
+#_toc a:hover { color: var(--text); background: var(--surface); }
+
+::selection { background: rgba(217, 119, 87, .28); }

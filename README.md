@@ -50,9 +50,11 @@ This theme was vibe-coded with an AI assistant (Claude Opus 5.5). Listing the co
 | Model calls | ~50 |
 | Tokens processed | ~11M (mostly cached context re-reads) |
 | Tokens generated | ~26K |
-| Input-equivalent cost | ~1.6M tokens (cache reads 0.1x, cache writes 2x, output 5x) |
+| Equivalent API cost | ~$4.2 |
 
 This covers designing the theme, rendering test notes in light and dark mode, and fixing the issues found along the way (unreadable code in light mode, overly long lines, centered table headers). It excludes publishing this repository.
+
+The dollar figure uses Claude Opus 5.5 API list prices as of October 2026 ($4 input, $20 output, $8 cache write, $0.20 cache read per million tokens). Prices change and subscription plans are not billed per token, so treat it as a rough guide; the token counts above are the more durable measure.
 
 ## License
 
